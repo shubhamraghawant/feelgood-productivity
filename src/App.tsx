@@ -7,8 +7,8 @@ import { RemindersTasks } from './components/RemindersTasks';
 import { PlayfulFocusTimer } from './components/PlayfulFocusTimer';
 import { TipsCatalogModal } from './components/TipsCatalogModal';
 import { FeelGoodBatteryModal } from './components/FeelGoodBatteryModal';
-import { Task, CalendarBlock, AliTip, WaterState, UserStats } from './types';
-import { getDailyTipForDate } from './data/aliAbdaalTips';
+import { Task, CalendarBlock, DailyTip, WaterState, UserStats } from './types';
+import { getDailyTipForDate } from './data/productivityTips';
 import { sound } from './utils/audio';
 
 export const App: React.FC = () => {
@@ -33,7 +33,7 @@ export const App: React.FC = () => {
   });
 
   // 2. Daily Tip State
-  const [currentTip, setCurrentTip] = useState<AliTip>(() => getDailyTipForDate(new Date()));
+  const [currentTip, setCurrentTip] = useState<DailyTip>(() => getDailyTipForDate(new Date()));
 
   // 3. Water State
   const [water, setWater] = useState<WaterState>(() => {
@@ -317,7 +317,7 @@ export const App: React.FC = () => {
 
       {/* Main Content Layout */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-7">
-        {/* Row 1: Ali Abdaal's Daily Wisdom Banner */}
+        {/* Row 1: Daily Productivity Wisdom Banner */}
         <section>
           <DailyTipCard
             currentTip={currentTip}
@@ -375,7 +375,7 @@ export const App: React.FC = () => {
       <footer className="border-t border-pastel-border/60 py-6 px-4 text-center text-xs text-slate-400 bg-white/50">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
-            ✨ <strong>FeelGood Productivity</strong> — Designed with Ali Abdaal's feel-good principles.
+            ✨ <strong>FeelGood Productivity</strong> — Designed for joyful productivity and energizing flow.
           </p>
           <p className="flex items-center gap-1">
             Pure Light Aesthetic • Pastel Calm • Playful Flow

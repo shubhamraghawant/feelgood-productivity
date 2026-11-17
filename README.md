@@ -1,6 +1,6 @@
 # ✨ FeelGood Productivity
 
-> A minimal, playful, pastel-themed productivity companion inspired by **Ali Abdaal's** bestselling book *Feel-Good Productivity* and top videos.
+> A minimal, playful, pastel-themed productivity companion built on evidence-based feel-good productivity principles and intentional daily flow.
 
 Designed with light pastel aesthetics, smooth rounded corners, delightful sound effects, and an interactive flow system to make work energizing and fun.
 
@@ -8,8 +8,8 @@ Designed with light pastel aesthetics, smooth rounded corners, delightful sound 
 
 ## 🌟 Key Features
 
-### 1. 💡 Daily Ali Abdaal Productivity Tips (30+ Authentic Principles)
-- **Daily Wisdom Rotation**: Shows a brand-new Ali Abdaal productivity principle every day based on the calendar date.
+### 1. 💡 Daily Productivity Wisdom (30+ Core Principles)
+- **Daily Wisdom Rotation**: Shows a brand-new evidence-based productivity principle every day based on the calendar date.
 - **Categorized by the 3 Energizers & Blockers**:
   - *Energize* (Play, Power, People, Temptation Bundling)
   - *Unblock* (5-Minute Rule, Friction Removal, Confidence-Competence Loop)
@@ -26,7 +26,7 @@ Designed with light pastel aesthetics, smooth rounded corners, delightful sound 
 - **Quick Logging**: `+250ml (Cup)`, `+500ml (Bottle)`, `+100ml (Sip)`, and undo.
 - **Smart Hydration Reminders**: Configurable timer intervals (30m, 45m, 60m, 90m) with desktop browser notifications and pleasant audio chimes.
 - **Celebration Confetti**: Hitting your daily water goal triggers a confetti blast and audio fanfare.
-- Grounded in Ali's medical advice: *Even 1–2% dehydration drops working cognitive speed by 14%*.
+- Grounded in cognitive science: *Even 1–2% dehydration drops working cognitive speed by 14%*.
 
 ### 3. 📅 Unique Calendar (24h Horizon & Energy Matrix)
 - **Circadian Energy Matching**: Schedules tasks according to natural mental energy:
@@ -34,7 +34,7 @@ Designed with light pastel aesthetics, smooth rounded corners, delightful sound 
   - ☀️ *Midday (12:00–14:00)*: Social & Collaborative Flow
   - ☕ *Afternoon (14:00–17:00)*: Batched Admin & Quick Wins
   - 🌙 *Evening (17:00–22:00)*: Guilt-Free Recharge
-- **Ali's "Ideal Week" vs "Actual Week" Toggle**: Compare your aspirational weekly blueprint against real day execution.
+- **"Ideal Week" vs "Actual Week" Toggle**: Compare your aspirational weekly blueprint against real day execution.
 - **One-Click Timebox Presets**:
   - `🎯 Daily Highlight (90m)`
   - `⚡ Creative Sprint (45m)`
@@ -49,8 +49,8 @@ Designed with light pastel aesthetics, smooth rounded corners, delightful sound 
 ### 5. 🎮 Playful Focus Timer & Ambient Audio Generator
 - **Focus Sprint Modes**:
   - `⚡ 5-Minute Inertia Buster`: Overcome starting resistance.
-  - `🎯 25m Sprint`: Focused pomodoro.
-  - `✨ 45m Deep Flow`: Ali's sweet spot.
+  - `🎯 25m Sprint`: Focused sprint.
+  - `✨ 45m Deep Flow`: High-engagement flow state.
   - `🌿 5m Mindful Break`: Recharge interval.
 - **Offline Web Audio Synthesizer**:
   - 🧠 40Hz Gamma Focus Binaural Beats (pure offline sine synthesis)

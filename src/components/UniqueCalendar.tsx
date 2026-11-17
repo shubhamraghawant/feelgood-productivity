@@ -130,7 +130,7 @@ export const UniqueCalendar: React.FC<UniqueCalendarProps> = ({
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-bold text-slate-800">Energy & Time Flow</h2>
               <span className="text-[11px] font-semibold bg-stone-100 px-2 py-0.5 rounded-full text-slate-500 border border-stone-200">
-                Ali's Timeboxing
+                Energy Timeboxing
               </span>
             </div>
             <p className="text-xs text-slate-400 font-medium">
@@ -139,7 +139,7 @@ export const UniqueCalendar: React.FC<UniqueCalendarProps> = ({
           </div>
         </div>
 
-        {/* View Controls & Ali's "Ideal vs Actual" Filter */}
+        {/* View Controls & "Ideal vs Actual" Filter */}
         <div className="flex flex-wrap items-center gap-2 ml-auto">
           {/* Ideal vs Actual Pill */}
           <div className="flex items-center bg-stone-100 p-1 rounded-2xl border border-stone-200/80 text-xs">
@@ -166,7 +166,7 @@ export const UniqueCalendar: React.FC<UniqueCalendarProps> = ({
                   ? 'bg-pastel-lilac-200 text-pastel-lilac-500 shadow-soft-sm'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
-              title="Ali's Ideal Week Blueprint"
+              title="Ideal Week Blueprint"
             >
               <Sparkles className="w-3 h-3" />
               <span>Ideal Week</span>

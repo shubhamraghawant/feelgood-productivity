@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Sparkles, Dices, Heart, CheckCircle2, BookOpen, Video, Share2, Compass } from 'lucide-react';
-import { AliTip } from '../types';
+import { Sparkles, Dices, Heart, CheckCircle2, BookOpen, Bookmark, Share2, Compass } from 'lucide-react';
+import { DailyTip } from '../types';
 import { sound } from '../utils/audio';
 import { firePastelConfetti } from '../utils/confetti';
-import { getRandomTip } from '../data/aliAbdaalTips';
+import { getRandomTip } from '../data/productivityTips';
 
 interface DailyTipCardProps {
-  currentTip: AliTip;
-  onSetTip: (tip: AliTip) => void;
+  currentTip: DailyTip;
+  onSetTip: (tip: DailyTip) => void;
   onOpenCatalog: () => void;
   isApplied: boolean;
   onToggleApplied: (tipId: string) => void;
@@ -49,7 +49,7 @@ export const DailyTipCard: React.FC<DailyTipCardProps> = ({
 
   const handleCopy = () => {
     sound.playPop();
-    const text = `✨ Ali Abdaal's Tip: "${currentTip.title}"\n\n"${currentTip.quote}"\n\nAction: ${currentTip.actionableStep}`;
+    const text = `✨ Daily Wisdom: "${currentTip.title}"\n\n"${currentTip.quote}"\n\nAction: ${currentTip.actionableStep}`;
     navigator.clipboard?.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -77,7 +77,7 @@ export const DailyTipCard: React.FC<DailyTipCardProps> = ({
             {currentTip.category}
           </span>
           <span className="text-xs font-medium text-slate-400 flex items-center gap-1">
-            <Compass className="w-3.5 h-3.5 text-pastel-lilac-500" /> Daily Ali Abdaal Rule
+            <Compass className="w-3.5 h-3.5 text-pastel-lilac-500" /> Daily Golden Principle
           </span>
         </div>
 
@@ -102,7 +102,7 @@ export const DailyTipCard: React.FC<DailyTipCardProps> = ({
           <button
             onClick={handleRollRandom}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-50 hover:bg-stone-100 text-slate-600 border border-stone-200/80 text-xs font-semibold transition active:scale-95"
-            title="Surprise me with another Ali Abdaal principle"
+            title="Surprise me with another principle"
           >
             <Dices className="w-3.5 h-3.5 text-pastel-lilac-500" />
             <span className="hidden sm:inline">Surprise Tip</span>
@@ -153,11 +153,11 @@ export const DailyTipCard: React.FC<DailyTipCardProps> = ({
       <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
         {/* Origin info */}
         <div className="flex items-center gap-2 text-xs text-slate-500">
-          <Video className="w-3.5 h-3.5 text-pastel-rose-500" />
-          <span className="font-medium text-slate-600">{currentTip.videoSource}</span>
-          {currentTip.bookChapter && (
+          <Bookmark className="w-3.5 h-3.5 text-pastel-rose-500" />
+          <span className="font-medium text-slate-600">{currentTip.source}</span>
+          {currentTip.chapter && (
             <span className="text-slate-400 hidden md:inline">
-              • {currentTip.bookChapter}
+              • {currentTip.chapter}
             </span>
           )}
         </div>
@@ -190,3 +190,4 @@ export const DailyTipCard: React.FC<DailyTipCardProps> = ({
     </div>
   );
 };
+

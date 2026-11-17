@@ -1,6 +1,6 @@
-import { AliTip } from '../types';
+import { DailyTip } from '../types';
 
-export const ALI_ABDAAL_TIPS: AliTip[] = [
+export const PRODUCTIVITY_TIPS: DailyTip[] = [
   {
     id: 'tip-1',
     title: 'The Daily Highlight',
@@ -8,8 +8,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Pick one activity each day to prioritize, protect, and celebrate. If you accomplish only this, the day is an absolute win.',
     actionableStep: 'Choose your #1 highlight right now. Block 60–90 distraction-free minutes for it before afternoon.',
     category: 'Energize',
-    videoSource: 'How I Plan My Day (Make Time System)',
-    bookChapter: 'Chapter 1: Play & Focus',
+    source: 'Daily Planning & Priority Architecture',
+    chapter: 'Play & Focus',
     tags: ['focus', 'priority', 'daily-highlight']
   },
   {
@@ -19,8 +19,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Promise yourself you will only work on the dreaded task for exactly 5 minutes. If you want to stop after 5 minutes, you are free to do so.',
     actionableStep: 'Pick that intimidating task and start a 5-minute timer. Just open the document or write one sentence.',
     category: 'Unblock',
-    videoSource: 'How to Stop Procrastinating Once and For All',
-    bookChapter: 'Chapter 4: The Friction Formula',
+    source: 'Overcoming Inertia & Resistance',
+    chapter: 'The Friction Formula',
     tags: ['procrastination', 'inertia', 'quick-start']
   },
   {
@@ -30,19 +30,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Associate mundane tasks with sensory pleasures: listen to your favorite podcast only while washing dishes, or do spreadsheet work at your favorite cozy cafe with a matcha latte.',
     actionableStep: 'Pair today’s most boring chore with an enjoyable drink, playlist, or pleasant environment.',
     category: 'Energize',
-    videoSource: 'Feel-Good Productivity: The Science of Fun',
-    bookChapter: 'Chapter 2: Power & Pleasure',
+    source: 'The Science of Joyful Productivity',
+    chapter: 'Power & Pleasure',
     tags: ['dopamine', 'habit-stacking', 'fun']
   },
   {
     id: 'tip-4',
-    title: 'The 2-Minute Rule (David Allen / Getting Things Done)',
+    title: 'The 2-Minute Rule',
     quote: 'If a task takes less than two minutes, do it right now instead of filing or stressing over it.',
     takeaway: 'Storing tiny items in your brain or task list costs more cognitive energy than just doing them on the spot.',
     actionableStep: 'Scan your inbox or desk. Reply to that quick email or file that receipt immediately.',
     category: 'Unblock',
-    videoSource: 'My Complete Productivity System (GTD Explained)',
-    bookChapter: 'Chapter 5: Streamlining Friction',
+    source: 'Getting Things Done Method',
+    chapter: 'Streamlining Friction',
     tags: ['gtd', 'quick-wins', 'speed']
   },
   {
@@ -52,19 +52,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'If you give yourself all day to finish a slide deck, it takes all day. Give yourself 45 minutes, and your brain naturally filters out trivial perfectionism.',
     actionableStep: 'Halve the time you planned for your next task and set a countdown clock.',
     category: 'Focus',
-    videoSource: 'The 7 Laws of Productivity Everyone Should Know',
-    bookChapter: 'Chapter 3: The Efficiency Illusion',
+    source: 'Essential Laws of Productivity',
+    chapter: 'The Efficiency Illusion',
     tags: ['deadlines', 'efficiency', 'focus']
   },
   {
     id: 'tip-6',
-    title: 'The 10/10/10 Rule for Stress & Worry',
+    title: 'The 10/10/10 Rule for Stress & Perspective',
     quote: 'Most things we stress over will not matter tomorrow, let alone in a year.',
     takeaway: 'Ask yourself: Will this issue matter in 10 minutes? In 10 months? In 10 years? 95% of everyday worries dissolve at the 10-month mark.',
     actionableStep: 'Whenever you feel anxiety rising about a mistake or delay, run the 10/10/10 perspective filter.',
     category: 'Mindset',
-    videoSource: 'How to Stop Overthinking Everything',
-    bookChapter: 'Chapter 7: Emotional Resilience',
+    source: 'Emotional Resilience & Clarity',
+    chapter: 'Emotional Grounding',
     tags: ['mindset', 'perspective', 'calm']
   },
   {
@@ -72,10 +72,10 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     title: 'Guilt-Free Rest: Scheduled Recharging',
     quote: 'Rest is not a reward for work; rest is a prerequisite for good work.',
     takeaway: 'When you take a break while secretly feeling guilty, you get neither the benefit of resting nor the output of working. Schedule genuine play and relaxation.',
-    actionableStep: 'Put a 30-minute block on your calendar today titled "Guilt-Free Rest" and spend it reading, walking, or playing.',
+    actionableStep: 'Put a 30-minute block on your calendar today titled "Guilt-Free Rest" and spend it reading, walking, or relaxing.',
     category: 'Sustain',
-    videoSource: 'Burnout Recovery: Why Hard Work Isn’t the Enemy',
-    bookChapter: 'Chapter 8: Deep Recharge',
+    source: 'Burnout Prevention & Recovery',
+    chapter: 'Deep Recharge',
     tags: ['burnout', 'rest', 'self-care']
   },
   {
@@ -85,30 +85,30 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Balance high-priority bread-and-butter tasks (70%) with experimental creative side projects (20%) and rejuvenating leisure (10%).',
     actionableStep: 'Audit your week: Are you allocating at least 2 hours to a project that brings pure creative excitement?',
     category: 'Sustain',
-    videoSource: 'How I Invest My Time Like a VC',
-    bookChapter: 'Chapter 9: Long-term Alignment',
+    source: 'Time Allocation & Portfolio Strategy',
+    chapter: 'Long-term Alignment',
     tags: ['energy', 'balance', 'creativity']
   },
   {
     id: 'tip-9',
     title: 'Play Mentality: What Would This Look Like If It Were Fun?',
     quote: 'The single most transformative question: "What would this look like if it were fun?"',
-    takeaway: 'We mistakenly believe seriousness equals productivity. Approaching a project with curiosity and lightheartedness unlocks higher dopamine and flow.',
-    actionableStep: 'Ask yourself: Can I turn this spreadsheet or essay into a game? Can I race a timer or put on movie score music?',
+    takeaway: 'Approaching a project with curiosity and lightheartedness unlocks higher dopamine and effortless flow.',
+    actionableStep: 'Ask yourself: Can I turn this task into a game? Can I race a timer or put on an uplifting soundtrack?',
     category: 'Energize',
-    videoSource: 'The Secret to Enjoying Boring Work',
-    bookChapter: 'Chapter 1: The Play Principle',
+    source: 'The Play Principle',
+    chapter: 'Curiosity & Game Design',
     tags: ['fun', 'gamification', 'flow']
   },
   {
     id: 'tip-10',
-    title: 'The "Hell Yeah or No" Rule (Derek Sivers)',
+    title: 'The "Hell Yeah or No" Rule',
     quote: 'If you’re not saying "HELL YEAH!" about something, say no.',
     takeaway: 'Every time you agree to an uninspiring meeting or obligation, you are saying no to your core creative energy and rest.',
     actionableStep: 'Identify one commitment on your plate this week that is a lukewarm "maybe", and politely decline or delegate it.',
     category: 'Mindset',
-    videoSource: 'How to Say No Without Feeling Guilty',
-    bookChapter: 'Chapter 7: Boundary Setting',
+    source: 'Boundary Setting & Saying No',
+    chapter: 'Clarity of Commitments',
     tags: ['boundaries', 'saying-no', 'clarity']
   },
   {
@@ -118,19 +118,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Keep track throughout the day of which tasks give you energy versus which ones leave you feeling wiped out.',
     actionableStep: 'Draw two columns: "Gave Energy" and "Drained Energy". Note 3 items from yesterday.',
     category: 'Sustain',
-    videoSource: 'Why You Feel Tired All The Time (It’s Not Sleep)',
-    bookChapter: 'Chapter 6: The Energy Audit',
+    source: 'Energy Architecture',
+    chapter: 'The Daily Audit',
     tags: ['audit', 'energy', 'awareness']
   },
   {
     id: 'tip-12',
     title: 'Friction Removal: The 20-Second Rule',
     quote: 'Reduce friction for good habits; add friction for bad ones.',
-    takeaway: 'Shawn Achor found that making a guitar 20 seconds easier to reach caused practice to soar. Hiding phone apps inside folders reduces mindless scrolling.',
-    actionableStep: 'Place your water bottle directly on your desk, and put your phone in another room while doing your Daily Highlight.',
+    takeaway: 'Making good tools 20 seconds easier to reach causes adoption to soar. Placing phones out of reach removes mindless distraction.',
+    actionableStep: 'Place your water bottle directly on your desk, and put your phone in another room during your Daily Highlight.',
     category: 'Unblock',
-    videoSource: 'Atomic Habits Summary & Practical Implementation',
-    bookChapter: 'Chapter 4: Environment Design',
+    source: 'Habit Architecture & Environment Design',
+    chapter: 'Environment Design',
     tags: ['friction', 'environment', 'habits']
   },
   {
@@ -138,21 +138,21 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     title: 'The Feynman Technique for Deep Learning',
     quote: 'If you cannot explain something simply to a 10-year-old, you don’t truly understand it.',
     takeaway: 'True comprehension comes from deconstructing jargon and teaching concepts with metaphors.',
-    actionableStep: 'Take one concept you recently learned and summarize it in 3 bullet points using plain, simple English.',
+    actionableStep: 'Take one concept you recently learned and summarize it in 3 bullet points using plain, simple language.',
     category: 'Focus',
-    videoSource: 'How I Ranked 1st at Cambridge Medical School',
-    bookChapter: 'Study Strategies Series',
+    source: 'Mastery Learning Strategies',
+    chapter: 'Active Learning',
     tags: ['learning', 'feynman', 'mastery']
   },
   {
     id: 'tip-14',
-    title: 'Body Doubling & Virtual Coworking',
+    title: 'Body Doubling & Silent Coworking',
     quote: 'Just having someone present in the room triples your accountability and quiet focus.',
-    takeaway: 'You don’t have to work in isolation. Working silently alongside a peer or using virtual focus rooms eliminates the urge to browse distractingly.',
-    actionableStep: 'Arrange a 45-minute focus session with a colleague or friend, or open a live study-with-me stream.',
+    takeaway: 'Working silently alongside a peer or in a virtual focus room eliminates the urge to browse distractingly.',
+    actionableStep: 'Arrange a 45-minute focus session with a colleague or friend, or open a live study/work stream.',
     category: 'Energize',
-    videoSource: 'Study With Me / The Power of Accountability',
-    bookChapter: 'Chapter 3: People as Power',
+    source: 'Social Momentum & Accountability',
+    chapter: 'People as Power',
     tags: ['accountability', 'coworking', 'focus']
   },
   {
@@ -162,8 +162,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Shift from "I have to write 500 words" to "I am a writer who loves expressing ideas". Your actions naturally follow your internal identity.',
     actionableStep: 'Repeat to yourself: "I am someone who handles important work with calm clarity."',
     category: 'Mindset',
-    videoSource: 'How Changing Your Identity Changes Your Life',
-    bookChapter: 'Chapter 2: Power and Agency',
+    source: 'Identity & Habit Psychology',
+    chapter: 'Power and Agency',
     tags: ['identity', 'mindset', 'habits']
   },
   {
@@ -173,8 +173,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Instead of checking invoices, Slack messages, and emails throughout the day, batch them into a dedicated 45-minute window in the late afternoon.',
     actionableStep: 'Batch all administrative tasks into one 4:00 PM sprint today. Protect your morning for deep focus.',
     category: 'Focus',
-    videoSource: 'How I Organize My Entire Life in Notion & Calendar',
-    bookChapter: 'Chapter 5: Calendar Architecture',
+    source: 'Calendar Architecture & Timeboxing',
+    chapter: 'Protecting Flow',
     tags: ['batching', 'admin', 'deep-work']
   },
   {
@@ -184,8 +184,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Waiting until you feel ready is a trap. Start awkwardly, gain feedback, build competence, and real confidence will follow naturally.',
     actionableStep: 'Take one clumsy, imperfect action today on a skill or project you have been hesitating on.',
     category: 'Unblock',
-    videoSource: 'The Ultimate Guide to Self-Confidence',
-    bookChapter: 'Chapter 2: Overcoming Imposter Syndrome',
+    source: 'Overcoming Imposter Syndrome',
+    chapter: 'Action-First Momentum',
     tags: ['confidence', 'action', 'imposter-syndrome']
   },
   {
@@ -195,30 +195,30 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'End your day by asking: 1. What gave me joy and energy today? 2. What drained me? 3. What small experiment will I try tomorrow?',
     actionableStep: 'Jot down 1 sentence answering each compass question in your evening wind-down.',
     category: 'Sustain',
-    videoSource: 'My Daily Evening Routine for Peace of Mind',
-    bookChapter: 'Chapter 9: The Compass Technique',
+    source: 'Evening Wind-Down & Daily Review',
+    chapter: 'The Compass Technique',
     tags: ['reflection', 'journaling', 'evening']
   },
   {
     id: 'tip-19',
     title: 'Hydration as a Cognitive Lever',
     quote: 'Even mild 1–2% dehydration drops attention span, memory retrieval, and working speed.',
-    takeaway: 'Drinking water is the easiest biological productivity hack. When your brain feels foggy or resistant, drink a full glass of cool water before reaching for coffee.',
+    takeaway: 'Drinking water is the easiest biological productivity lever. When your brain feels foggy or resistant, drink a full glass of cool water before reaching for coffee.',
     actionableStep: 'Drink 250ml right now. Notice the immediate refreshing lift in mental alertness.',
     category: 'Energize',
-    videoSource: 'Simple Health Habits That Double Productivity',
-    bookChapter: 'Chapter 8: Physical Foundations',
+    source: 'Biological Foundations for Focus',
+    chapter: 'Physical Energy',
     tags: ['water', 'hydration', 'energy']
   },
   {
     id: 'tip-20',
     title: 'The Someday / Maybe List',
     quote: 'Your brain is for having ideas, not for holding them.',
-    takeaway: 'David Allen’s core tenet: when an idea or project isn’t actionable this week, store it in a designated Someday list so it doesn’t hijack your current focus.',
+    takeaway: 'When an idea or project isn’t actionable this week, store it in a designated Someday list so it doesn’t hijack your current focus.',
     actionableStep: 'Empty all random thoughts and future project ideas out of your head onto a backlog list.',
     category: 'Unblock',
-    videoSource: 'How I Remember Everything I Read & Think',
-    bookChapter: 'Chapter 5: Freeing Cognitive Bandwidth',
+    source: 'Personal Knowledge & Focus Management',
+    chapter: 'Freeing Cognitive Bandwidth',
     tags: ['mental-clarity', 'ideas', 'gtd']
   },
   {
@@ -228,19 +228,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Saying "I have to review this document" triggers resentment and threat responses. Saying "I get to solve this problem" activates curiosity and gratitude.',
     actionableStep: 'Catch yourself saying "I have to" today and audibly replace it with "I get to".',
     category: 'Mindset',
-    videoSource: 'How to Rewire Your Brain for Happiness',
-    bookChapter: 'Chapter 1: Reframe & Relish',
+    source: 'Cognitive Reframing',
+    chapter: 'Reframe & Relish',
     tags: ['reframing', 'gratitude', 'mindset']
   },
   {
     id: 'tip-22',
-    title: 'Soft Pomodoros & Gentle Flow Sprints',
+    title: 'Soft Focus Sprints',
     quote: 'Productivity timers should feel like a cozy rhythm, not an angry school bell.',
-    takeaway: 'Traditional 25-minute Pomodoros can feel harsh if you hit flow. Use a soft 35–45 minute flow sprint, followed by a gentle stretch or water sip.',
+    takeaway: 'Traditional timers can feel rigid. Use a soft 35–45 minute flow sprint, followed by a gentle stretch or water sip.',
     actionableStep: 'Run a 35-minute flow session with lofi music and give yourself 5 minutes of mindful breathing after.',
     category: 'Focus',
-    videoSource: 'How to Study 12 Hours a Day Without Burning Out',
-    bookChapter: 'Chapter 3: Focus Rhythms',
+    source: 'Focus Rhythms & Stamina',
+    chapter: 'Sprint Architecture',
     tags: ['pomodoro', 'focus', 'sprint']
   },
   {
@@ -250,8 +250,8 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'When our to-do list has 20 items, everything feels urgent. Narrowing down to the Top 3 keeps cognitive load low and satisfaction high.',
     actionableStep: 'Identify your Top 3 tasks for today: 1 Daily Highlight and 2 supportive tasks.',
     category: 'Focus',
-    videoSource: 'The Simple 3-Rule System I Use Every Single Day',
-    bookChapter: 'Chapter 1: The Essential Three',
+    source: 'Outcome-Oriented Planning',
+    chapter: 'The Essential Three',
     tags: ['rule-of-3', 'clarity', 'planning']
   },
   {
@@ -261,19 +261,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Give yourself a physical nod, fist pump, or celebratory tick whenever you complete a task. Celebrating reinforces positive neural pathways.',
     actionableStep: 'Celebrate right now: check off a task and celebrate the feeling of forward momentum!',
     category: 'Energize',
-    videoSource: 'Feel-Good Productivity: Dopamine & Momentum',
-    bookChapter: 'Chapter 2: Rewarding the Journey',
+    source: 'Dopamine & Momentum',
+    chapter: 'Rewarding the Journey',
     tags: ['dopamine', 'wins', 'celebration']
   },
   {
     id: 'tip-25',
     title: 'The "Ideal Week" Calendar Blueprint',
     quote: 'Design your calendar proactively for how you want your life to feel, not reactively to other people’s demands.',
-    takeaway: 'Create a template for your ideal rhythm: deep creative focus in mornings, exercise before lunch, meetings grouped on Tuesdays & Thursdays.',
+    takeaway: 'Create a template for your ideal rhythm: deep creative focus in mornings, exercise before lunch, meetings grouped in dedicated afternoon blocks.',
     actionableStep: 'Look at your week ahead and block out your sacred morning focus hours before anyone can book over them.',
     category: 'Sustain',
-    videoSource: 'How to Time-Box Your Entire Life',
-    bookChapter: 'Chapter 5: Proactive Scheduling',
+    source: 'Proactive Scheduling & Blueprinting',
+    chapter: 'Calendar Design',
     tags: ['calendar', 'ideal-week', 'timeboxing']
   },
   {
@@ -283,19 +283,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'If you procrastinated today, don’t spiral into guilt. Ask with curiosity: "What made that task feel uncertain or unappealing? How can I tweak the formula?"',
     actionableStep: 'Next time you procrastinate, write down the exact friction point: Was it lack of clarity or fear of doing it badly?',
     category: 'Mindset',
-    videoSource: 'How to Overcome Self-Doubt and Fear',
-    bookChapter: 'Chapter 4: The Curious Scientist',
+    source: 'Self-Compassion & Behavioral Science',
+    chapter: 'The Curious Scientist',
     tags: ['curiosity', 'self-compassion', 'experiment']
   },
   {
     id: 'tip-27',
     title: 'Active Recall Beats Passive Rereading',
     quote: 'Testing yourself strengthens neural retrieval pathways 300% faster than highlighting notes.',
-    takeaway: 'Whether studying medicine or preparing for a presentation, close the book and quiz yourself or write from memory.',
+    takeaway: 'Whether studying a discipline or preparing for a presentation, close the book and quiz yourself or write from memory.',
     actionableStep: 'After reading any article or book chapter, write 3 key takeaways from memory without looking.',
     category: 'Focus',
-    videoSource: 'The Most Powerful Learning Strategy (Evidence-Based)',
-    bookChapter: 'Active Recall Mastery',
+    source: 'Evidence-Based Learning Science',
+    chapter: 'Active Recall Mastery',
     tags: ['study', 'learning', 'recall']
   },
   {
@@ -305,19 +305,19 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     takeaway: 'Leave at least 20% of your calendar open for spontaneous conversations, delays, or impromptu creative rabbit holes.',
     actionableStep: 'Add a 45-minute "Buffer & Overflow" block to your afternoon to absorb surprises calmly.',
     category: 'Sustain',
-    videoSource: 'Why Time Blocking Fails (And How to Fix It)',
-    bookChapter: 'Chapter 5: The Elastic Schedule',
+    source: 'Flexible Time Architecture',
+    chapter: 'The Elastic Schedule',
     tags: ['calendar', 'flexibility', 'buffer']
   },
   {
     id: 'tip-29',
     title: 'The Power of Public Accountability',
     quote: 'Committing your intention to another human creates positive social momentum.',
-    takeaway: 'Tell a friend or post online: "I am writing chapter 1 by 5 PM today." Social commitment makes follow-through second nature.',
+    takeaway: 'Tell a friend or post online: "I am writing draft 1 by 5 PM today." Social commitment makes follow-through second nature.',
     actionableStep: 'Text a friend your Daily Highlight and tell them you’ll check in when it’s done.',
     category: 'Energize',
-    videoSource: 'How I Write Books and Make Videos Consistently',
-    bookChapter: 'Chapter 3: Social Synergy',
+    source: 'Social Synergy & Focus',
+    chapter: 'Commitment Architecture',
     tags: ['accountability', 'people', 'consistency']
   },
   {
@@ -325,29 +325,28 @@ export const ALI_ABDAAL_TIPS: AliTip[] = [
     title: 'Decide to Be an Amateur',
     quote: 'Give yourself permission to make terrible first drafts. Perfectionism is just fear in disguise.',
     takeaway: 'The first version of anything is supposed to be messy. Lower your standards for the first draft to allow momentum to ignite.',
-    actionableStep: 'Commit to creating a "shitty first draft" today without editing a single word while writing.',
+    actionableStep: 'Commit to creating a "messy first draft" today without editing a single word while writing.',
     category: 'Unblock',
-    videoSource: 'How to Overcome Perfectionism',
-    bookChapter: 'Chapter 4: Lowering the Stakes',
+    source: 'Overcoming Perfectionism',
+    chapter: 'Lowering the Stakes',
     tags: ['perfectionism', 'drafts', 'creativity']
   }
 ];
 
-export function getDailyTipForDate(date: Date = new Date()): AliTip {
-  // Deterministic daily tip: day of year
+export function getDailyTipForDate(date: Date = new Date()): DailyTip {
   const startOfYear = new Date(date.getFullYear(), 0, 0);
   const diff = date.getTime() - startOfYear.getTime();
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
   
-  const index = Math.abs(dayOfYear) % ALI_ABDAAL_TIPS.length;
-  return ALI_ABDAAL_TIPS[index];
+  const index = Math.abs(dayOfYear) % PRODUCTIVITY_TIPS.length;
+  return PRODUCTIVITY_TIPS[index];
 }
 
-export function getRandomTip(excludeId?: string): AliTip {
+export function getRandomTip(excludeId?: string): DailyTip {
   const filtered = excludeId 
-    ? ALI_ABDAAL_TIPS.filter(t => t.id !== excludeId)
-    : ALI_ABDAAL_TIPS;
+    ? PRODUCTIVITY_TIPS.filter(t => t.id !== excludeId)
+    : PRODUCTIVITY_TIPS;
   const randomIndex = Math.floor(Math.random() * filtered.length);
   return filtered[randomIndex];
 }

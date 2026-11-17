@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
                 FeelGood
               </h1>
               <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-pastel-lilac-100 text-pastel-lilac-500 border border-pastel-lilac-200">
-                Ali Abdaal Edition
+                Feel-Good Flow
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium hidden sm:block">
@@ -108,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }`}
                 >
                   <span>🧠 40Hz Gamma Focus</span>
-                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded-md border">Ali's Pick</span>
+                  <span className="text-[10px] bg-white px-1.5 py-0.5 rounded-md border">Focus Mode</span>
                 </button>
                 <button
                   onClick={() => handleSelectAmbient('waves')}

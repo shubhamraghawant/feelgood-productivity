@@ -31,15 +31,15 @@ export interface CalendarBlock {
 
 export type TipCategory = 'Energize' | 'Unblock' | 'Sustain' | 'Mindset' | 'Focus';
 
-export interface AliTip {
+export interface DailyTip {
   id: string;
   title: string;
   quote: string;
   takeaway: string;
   actionableStep: string;
   category: TipCategory;
-  videoSource: string;
-  bookChapter?: string;
+  source: string;
+  chapter?: string;
   tags: string[];
 }
 

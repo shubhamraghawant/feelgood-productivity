@@ -131,7 +131,7 @@ export const RemindersTasks: React.FC<RemindersTasksProps> = ({
 
   return (
     <div className="bg-white rounded-3xl p-6 sm:p-7 border border-pastel-border shadow-soft-md transition-all space-y-6">
-      {/* ALI ABDAAL'S DAILY HIGHLIGHT SPOTLIGHT */}
+      {/* DAILY HIGHLIGHT SPOTLIGHT */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-pastel-peach-100/90 via-pastel-butter-100/70 to-pastel-rose-100/80 p-5 sm:p-6 border border-pastel-peach-200 shadow-soft-sm">
         <div className="flex items-center justify-between gap-2 mb-2">
           <div className="flex items-center gap-2">
@@ -139,7 +139,7 @@ export const RemindersTasks: React.FC<RemindersTasksProps> = ({
               <Star className="w-4 h-4 fill-pastel-peach-400 text-pastel-peach-500" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-800">Ali’s Daily Highlight</h3>
+              <h3 className="text-sm font-bold text-slate-800">Today's Daily Highlight</h3>
               <p className="text-[11px] text-slate-500">The #1 outcome that makes today satisfying</p>
             </div>
           </div>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { X, Search, Heart, Sparkles, BookOpen, Video, CheckCircle2 } from 'lucide-react';
-import { AliTip, TipCategory } from '../types';
-import { ALI_ABDAAL_TIPS } from '../data/aliAbdaalTips';
+import { X, Search, Heart, Sparkles, BookOpen, Bookmark, CheckCircle2 } from 'lucide-react';
+import { DailyTip, TipCategory } from '../types';
+import { PRODUCTIVITY_TIPS } from '../data/productivityTips';
 import { sound } from '../utils/audio';
 
 interface TipsCatalogModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectTip: (tip: AliTip) => void;
+  onSelectTip: (tip: DailyTip) => void;
   favoriteTips: string[];
   onToggleFavorite: (tipId: string) => void;
   appliedTips: string[];
@@ -36,7 +36,7 @@ export const TipsCatalogModal: React.FC<TipsCatalogModalProps> = ({
     'favorites',
   ];
 
-  const filteredTips = ALI_ABDAAL_TIPS.filter(tip => {
+  const filteredTips = PRODUCTIVITY_TIPS.filter(tip => {
     if (selectedCategory === 'favorites') {
       if (!favoriteTips.includes(tip.id)) return false;
     } else if (selectedCategory !== 'all') {
@@ -65,9 +65,9 @@ export const TipsCatalogModal: React.FC<TipsCatalogModalProps> = ({
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-800">Ali Abdaal's Wisdom Vault</h2>
+              <h2 className="text-lg font-bold text-slate-800">Productivity Wisdom Vault</h2>
               <p className="text-xs text-slate-400">
-                30+ Core Principles from Feel-Good Productivity and top videos
+                30+ Core Principles for Joyful Focus & Energy Architecture
               </p>
             </div>
           </div>
@@ -88,7 +88,7 @@ export const TipsCatalogModal: React.FC<TipsCatalogModalProps> = ({
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="text"
-              placeholder="Search by keyword, video, or tag (e.g. procrastination, feynman, energy)..."
+              placeholder="Search by keyword, source, or tag (e.g. procrastination, feynman, energy)..."
               value={search}
               onChange={e => setSearch(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-white border border-pastel-border text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-lilac-300 shadow-soft-sm"
@@ -184,8 +184,8 @@ export const TipsCatalogModal: React.FC<TipsCatalogModalProps> = ({
 
                   <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-stone-100">
                     <span className="flex items-center gap-1">
-                      <Video className="w-3 h-3 text-pastel-rose-500" />
-                      {tip.videoSource}
+                      <Bookmark className="w-3 h-3 text-pastel-rose-500" />
+                      {tip.source}
                     </span>
                     <span className="hidden sm:inline">{tip.tags.map(t => `#${t}`).join(' ')}</span>
                   </div>
@@ -198,3 +198,4 @@ export const TipsCatalogModal: React.FC<TipsCatalogModalProps> = ({
     </div>
   );
 };
+
