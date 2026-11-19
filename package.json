@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "tsc && vite build && cd dist && git init && git checkout -b gh-pages && git add -A && git commit -m 'deploy: update gh-pages' && git remote add origin https://github.com/shubhamraghawant/feelgood-productivity.git && git push -f origin gh-pages && rm -rf .git"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
