@@ -182,8 +182,20 @@ export const PlayfulFocusTimer: React.FC<PlayfulFocusTimerProps> = ({ onRewardXp
           </div>
         </div>
 
-        {/* Play / Pause / Reset Controls */}
-        <div className="flex items-center gap-3 mt-4">
+        {/* Play / Pause / Reset Controls & Fine Tuning */}
+        <div className="flex items-center gap-2.5 mt-4">
+          <button
+            onClick={() => {
+              sound.playPop();
+              setSecondsLeft(prev => Math.max(60, prev - 300));
+            }}
+            disabled={isRunning || secondsLeft <= 300}
+            className="w-8 h-8 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-500 text-xs font-bold disabled:opacity-40 transition"
+            title="Subtract 5 minutes"
+          >
+            -5m
+          </button>
+
           <button
             onClick={toggleTimer}
             className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white transition-all shadow-soft-md active:scale-95 ${
@@ -192,12 +204,25 @@ export const PlayfulFocusTimer: React.FC<PlayfulFocusTimerProps> = ({ onRewardXp
           >
             {isRunning ? <Pause className="w-5 h-5 fill-white" /> : <Play className="w-5 h-5 fill-white ml-0.5" />}
           </button>
+
           <button
             onClick={resetTimer}
             className="w-10 h-10 rounded-2xl bg-stone-100 hover:bg-stone-200 text-slate-600 flex items-center justify-center transition active:scale-95"
             title="Reset timer"
           >
             <RotateCcw className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => {
+              sound.playPop();
+              setSecondsLeft(prev => prev + 300);
+            }}
+            disabled={isRunning}
+            className="w-8 h-8 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-500 text-xs font-bold disabled:opacity-40 transition"
+            title="Add 5 minutes"
+          >
+            +5m
           </button>
         </div>
       </div>

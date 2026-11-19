@@ -286,6 +286,38 @@ export const App: React.FC = () => {
     setTasks(prev => prev.filter(t => t.id !== id));
   };
 
+  const handleClearCompleted = () => {
+    sound.playPop();
+    setTasks(prev => prev.filter(t => !t.completed));
+  };
+
+  const handleExportData = () => {
+    sound.playPop();
+    const backup = {
+      version: '1.0',
+      exportedAt: new Date().toISOString(),
+      stats,
+      water,
+      tasks,
+      blocks,
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `aura-backup-${todayStr}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleResetData = () => {
+    sound.playPop();
+    if (window.confirm('Reset all Aura data and restore fresh defaults?')) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  };
+
   const handleSetDailyHighlight = (title: string) => {
     const newHighlight: Task = {
       id: `highlight-${Date.now()}`,
@@ -417,6 +449,7 @@ export const App: React.FC = () => {
                   onDeleteTask={handleDeleteTask}
                   onSetDailyHighlight={handleSetDailyHighlight}
                   onRewardXp={rewardXp}
+                  onClearCompleted={handleClearCompleted}
                 />
               </div>
 
@@ -617,13 +650,29 @@ export const App: React.FC = () => {
 
       {/* Aesthetic Minimal Footer */}
       <footer className="border-t border-stone-200/50 py-5 px-4 text-center text-xs text-slate-400 bg-white/40 mt-auto">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
             ✦ <strong>Aura</strong> — Calm, intentional daily rhythm & joyful productivity.
           </p>
-          <p className="text-slate-400 text-[11px]">
-            Minimal Pastel Light Aesthetic • Zen Flow
-          </p>
+          <div className="flex items-center gap-3 text-[11px]">
+            <button
+              onClick={handleExportData}
+              className="hover:text-slate-700 underline font-medium transition"
+              title="Download backup JSON of all your Aura data"
+            >
+              Export Data
+            </button>
+            <span className="text-stone-300">•</span>
+            <button
+              onClick={handleResetData}
+              className="hover:text-rose-500 font-medium transition"
+              title="Clear all stored data"
+            >
+              Reset
+            </button>
+            <span className="text-stone-300">•</span>
+            <span className="text-slate-400">Local-First & Private</span>
+          </div>
         </div>
       </footer>
 

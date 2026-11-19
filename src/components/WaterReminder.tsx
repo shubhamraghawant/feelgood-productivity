@@ -18,6 +18,7 @@ export const WaterReminder: React.FC<WaterReminderProps> = ({
 }) => {
   const [minutesLeft, setMinutesLeft] = useState<number>(water.reminderIntervalMinutes);
   const [intervalSettingOpen, setIntervalSettingOpen] = useState(false);
+  const [targetSettingOpen, setTargetSettingOpen] = useState(false);
 
   const percentage = Math.min(100, Math.round((water.currentMl / water.targetMl) * 100));
   const glasses = (water.currentMl / 250).toFixed(1).replace('.0', '');
@@ -112,9 +113,17 @@ export const WaterReminder: React.FC<WaterReminderProps> = ({
           </div>
           <div>
             <h3 className="text-base font-bold text-slate-800">Hydration Flow</h3>
-            <p className="text-xs text-slate-400 font-medium">
-              Goal: {water.targetMl}ml (~{targetGlasses} glasses)
-            </p>
+            <button
+              onClick={() => {
+                sound.playPop();
+                setTargetSettingOpen(!targetSettingOpen);
+              }}
+              className="text-xs text-slate-400 hover:text-slate-600 font-medium flex items-center gap-1 group"
+              title="Click to edit daily target"
+            >
+              <span>Goal: {water.targetMl}ml (~{targetGlasses} glasses)</span>
+              <span className="text-[10px] text-pastel-sky-500 font-bold opacity-0 group-hover:opacity-100 transition">edit</span>
+            </button>
           </div>
         </div>
 
@@ -265,6 +274,30 @@ export const WaterReminder: React.FC<WaterReminderProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Target Selector Dropdown */}
+      {targetSettingOpen && (
+        <div className="mt-3 p-3 bg-pastel-sky-50/70 rounded-2xl border border-pastel-sky-200/80 flex flex-wrap items-center gap-2 text-xs animate-pop">
+          <span className="font-semibold text-slate-700 mr-1">Daily Target:</span>
+          {[1500, 2000, 2500, 3000].map(amount => (
+            <button
+              key={amount}
+              onClick={() => {
+                sound.playPop();
+                onUpdateWater(prev => ({ ...prev, targetMl: amount }));
+                setTargetSettingOpen(false);
+              }}
+              className={`px-3 py-1 rounded-xl font-bold transition ${
+                water.targetMl === amount
+                  ? 'bg-pastel-sky-500 text-white shadow-soft-sm'
+                  : 'bg-white text-slate-600 border border-stone-200 hover:bg-stone-50'
+              }`}
+            >
+              {amount} ml
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Interval Selector Dropdown */}
       {intervalSettingOpen && (

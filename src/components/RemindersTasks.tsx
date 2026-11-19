@@ -24,6 +24,7 @@ interface RemindersTasksProps {
   onDeleteTask: (id: string) => void;
   onSetDailyHighlight: (title: string) => void;
   onRewardXp: (amount: number) => void;
+  onClearCompleted?: () => void;
 }
 
 export const RemindersTasks: React.FC<RemindersTasksProps> = ({
@@ -33,6 +34,7 @@ export const RemindersTasks: React.FC<RemindersTasksProps> = ({
   onDeleteTask,
   onSetDailyHighlight,
   onRewardXp,
+  onClearCompleted,
 }) => {
   const [filter, setFilter] = useState<'all' | 'reminders' | 'highlight' | 'deep-work' | 'admin' | 'completed'>('all');
   const [isAdding, setIsAdding] = useState(false);
@@ -224,29 +226,43 @@ export const RemindersTasks: React.FC<RemindersTasksProps> = ({
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 pb-2 text-xs">
-          {[
-            { id: 'all', label: 'All Tasks' },
-            { id: 'reminders', label: '⏰ With Reminders' },
-            { id: 'deep-work', label: '⚡ Deep Work' },
-            { id: 'admin', label: '💌 Admin' },
-            { id: 'completed', label: '✅ Completed' },
-          ].map(tab => (
+        <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5">
+            {[
+              { id: 'all', label: 'All Tasks' },
+              { id: 'reminders', label: '⏰ With Reminders' },
+              { id: 'deep-work', label: '⚡ Deep Work' },
+              { id: 'admin', label: '💌 Admin' },
+              { id: 'completed', label: `✅ Completed (${tasks.filter(t => t.completed).length})` },
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  sound.playPop();
+                  setFilter(tab.id as typeof filter);
+                }}
+                className={`px-3 py-1 rounded-xl font-semibold transition ${
+                  filter === tab.id
+                    ? 'bg-slate-900 text-white shadow-soft-sm'
+                    : 'bg-stone-50 hover:bg-stone-100 text-slate-500 border border-stone-200/60'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {filter === 'completed' && onClearCompleted && tasks.some(t => t.completed) && (
             <button
-              key={tab.id}
               onClick={() => {
                 sound.playPop();
-                setFilter(tab.id as typeof filter);
+                onClearCompleted();
               }}
-              className={`px-3 py-1 rounded-xl font-semibold transition ${
-                filter === tab.id
-                  ? 'bg-slate-900 text-white shadow-soft-sm'
-                  : 'bg-stone-50 hover:bg-stone-100 text-slate-500 border border-stone-200/60'
-              }`}
+              className="text-[11px] font-semibold text-rose-500 hover:text-rose-600 hover:underline px-2 py-1"
             >
-              {tab.label}
+              Clear Completed
             </button>
-          ))}
+          )}
         </div>
       </div>
 

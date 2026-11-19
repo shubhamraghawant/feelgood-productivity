@@ -333,6 +333,51 @@ export const UniqueCalendar: React.FC<UniqueCalendarProps> = ({
             </div>
           </div>
 
+          {/* Visual 24h Horizon Bar */}
+          <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 space-y-2">
+            <div className="flex items-center justify-between text-[11px] font-bold text-slate-400">
+              <span>06:00 Dawn</span>
+              <span>12:00 Noon</span>
+              <span>18:00 Dusk</span>
+              <span>23:00 Night</span>
+            </div>
+            <div className="relative w-full h-8 bg-stone-200/50 rounded-xl overflow-hidden p-1 flex items-center">
+              {/* Hour Grid Markers */}
+              <div className="absolute inset-0 flex justify-between px-2 pointer-events-none opacity-20">
+                {Array.from({ length: 18 }).map((_, i) => (
+                  <div key={i} className="w-px h-full bg-slate-500" />
+                ))}
+              </div>
+
+              {/* Render Blocks onto the 06:00 - 23:00 timeline (17h = 1020m) */}
+              {dayBlocks.map(block => {
+                const parseMinutes = (timeStr: string) => {
+                  const [h, m] = timeStr.split(':').map(Number);
+                  return (h || 0) * 60 + (m || 0);
+                };
+                const startM = Math.max(360, Math.min(1380, parseMinutes(block.startTime)));
+                const endM = Math.max(startM + 15, Math.min(1380, parseMinutes(block.endTime)));
+                const leftPct = ((startM - 360) / 1020) * 100;
+                const widthPct = Math.max(3, ((endM - startM) / 1020) * 100);
+                const zStyle = zoneColors[block.zone] || zoneColors.creative;
+
+                return (
+                  <div
+                    key={`bar-${block.id}`}
+                    onClick={() => handleToggleBlock(block)}
+                    className={`absolute top-1 bottom-1 rounded-lg border text-[10px] font-bold flex items-center px-1.5 truncate cursor-pointer transition-all hover:scale-105 hover:z-10 shadow-sm ${zStyle.bg} ${zStyle.text} ${zStyle.border} ${
+                      block.completed ? 'opacity-50 line-through' : ''
+                    }`}
+                    style={{ left: `${leftPct}%`, width: `${widthPct}%` }}
+                    title={`${block.title} (${block.startTime} - ${block.endTime})`}
+                  >
+                    <span className="truncate">{block.title}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {/* List of Scheduled Time Blocks */}
           {dayBlocks.length === 0 ? (
             <div className="text-center py-12 px-4 rounded-3xl border-2 border-dashed border-pastel-border bg-stone-50/50">
