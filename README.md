@@ -1,6 +1,6 @@
 # ✦ Aura — Mindful Daily Rhythm & Productivity
 
-> A minimal, aesthetic, pastel-themed productivity companion built on evidence-based feel-good productivity principles and intentional daily flow.
+> A minimal, aesthetic, pastel-themed productivity companion built on evidence-based feel-good productivity principles, mindful wellness, and intentional daily flow.
 
 🌐 **Live Online Application**: [https://shubhamraghawant.github.io/feelgood-productivity/](https://shubhamraghawant.github.io/feelgood-productivity/)
 
@@ -12,9 +12,12 @@ Designed with light pastel aesthetics, smooth rounded corners, delicate soundsca
 
 ### 1. ✦ Today (Daily Sanctuary)
 - **Mindful Greeting & Status Strip**: Warm time-of-day greeting with instant visibility into water goal %, calendar blocks, and focus sprint status.
+- **🌤️ Adaptive Energy Check-In**: 1-click mood check (*Peak Flow, Calm & Steady, Sluggish, Overwhelmed*) with instant tailored guidance and action prompts.
 - **#1 Daily Highlight**: Prominent spotlight on the single most important outcome that makes today satisfying (+50 XP).
 - **Tasks & Reminders**: Clean, prioritized to-do list with time alarms, category filtering, and one-click "Clear Completed".
 - **Daily Golden Principle**: Today's curated productivity wisdom with actionable guidance and practical experiments.
+- **🪴 The Blooming Sanctuary**: An interactive botanical habit plant that visibly grows from a dormant seed to a full-bloom lotus as you accomplish daily intentions.
+- **🌸 60-Second Box Breathing Reset**: Calming 4-4-4-4 diaphragmatic breathing visualizer with singing bowl audio cues.
 
 ### 2. 📅 Rhythm (Circadian Calendar)
 - **24-Hour Horizon Bar & Arc**: Visual timeline matching tasks to circadian energy (Morning Creative Peak, Midday Social, Afternoon Admin, Evening Recharge).
@@ -37,7 +40,17 @@ Designed with light pastel aesthetics, smooth rounded corners, delicate soundsca
 - **Full Library**: 30+ core principles categorized into *Energize*, *Unblock*, *Sustain*, *Focus*, and *Mindset*.
 - **Search & Filter**: Search by keyword or tag, bookmark favorites, and set any principle as today's active focus.
 
-### 6. 🔒 Privacy & Local-First Freedom
+### 6. 🪞 The 3 Compass Questions (Evening Wind-Down)
+- Daily evening review prompts:
+  1. *What gave me joy and energy today?*
+  2. *What drained me or created friction?*
+  3. *What small experiment will I try tomorrow?*
+- Keeps a persistent history of previous reflections.
+
+### 7. 🎖️ Milestone Aura Badges
+- Collectible achievement badges rewarded for consistency, hydration, daily highlight completion, inertia busting, and garden blooming.
+
+### 8. 🔒 Privacy & Local-First Freedom
 - **100% Client-Side**: All data stays private in your browser's local storage.
 - **One-Click Export**: Download a timestamped JSON backup anytime from the footer.
 - **Full Reset**: Easily clear or restore fresh defaults.

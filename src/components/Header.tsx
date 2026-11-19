@@ -10,7 +10,10 @@ import {
   Droplets, 
   BookOpen, 
   CheckCircle2, 
-  Timer
+  Timer,
+  Trophy,
+  Feather,
+  Moon
 } from 'lucide-react';
 import { UserStats } from '../types';
 import { sound } from '../utils/audio';
@@ -20,6 +23,9 @@ export type ActiveTab = 'today' | 'calendar' | 'hydrate' | 'wisdom' | 'timer';
 interface HeaderProps {
   stats: UserStats;
   onOpenStatsModal: () => void;
+  onOpenBadges: () => void;
+  onOpenBreathing: () => void;
+  onOpenReflection: () => void;
   ambientSound: 'none' | 'waves' | 'rain' | 'binaural';
   setAmbientSound: (val: 'none' | 'waves' | 'rain' | 'binaural') => void;
   isMuted: boolean;
@@ -31,6 +37,9 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   stats,
   onOpenStatsModal,
+  onOpenBadges,
+  onOpenBreathing,
+  onOpenReflection,
   ambientSound,
   setAmbientSound,
   isMuted,
@@ -172,6 +181,47 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             )}
           </div>
+
+          {/* 60s Breathe Button */}
+          <button
+            onClick={() => {
+              sound.playPop();
+              onOpenBreathing();
+            }}
+            className="p-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 border border-stone-200/60 text-slate-500 hover:text-pastel-sky-500 transition hidden sm:flex items-center gap-1 text-xs"
+            title="60-Second Box Breathing Reset"
+          >
+            <Feather className="w-3.5 h-3.5 text-pastel-sky-500" />
+            <span className="text-[11px] font-semibold hidden md:inline">Breathe</span>
+          </button>
+
+          {/* Evening Reflection Button */}
+          <button
+            onClick={() => {
+              sound.playPop();
+              onOpenReflection();
+            }}
+            className="p-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 border border-stone-200/60 text-slate-500 hover:text-pastel-lilac-500 transition hidden sm:flex items-center gap-1 text-xs"
+            title="Evening Reflection (3 Compass Questions)"
+          >
+            <Moon className="w-3.5 h-3.5 text-pastel-lilac-500" />
+            <span className="text-[11px] font-semibold hidden md:inline">Review</span>
+          </button>
+
+          {/* Badges Trophy */}
+          <button
+            onClick={() => {
+              sound.playPop();
+              onOpenBadges();
+            }}
+            className="p-1.5 rounded-xl bg-pastel-butter-50 hover:bg-pastel-butter-100 border border-pastel-butter-200 text-pastel-butter-500 transition flex items-center gap-1 text-xs"
+            title="Milestone Badges"
+          >
+            <Trophy className="w-3.5 h-3.5 fill-pastel-butter-300" />
+            <span className="text-[11px] font-bold">
+              {stats.unlockedBadges?.length || 0}
+            </span>
+          </button>
 
           {/* Sound Mute Toggle */}
           <button

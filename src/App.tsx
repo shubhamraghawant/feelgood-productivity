@@ -7,9 +7,15 @@ import { RemindersTasks } from './components/RemindersTasks';
 import { PlayfulFocusTimer } from './components/PlayfulFocusTimer';
 import { TipsCatalogModal } from './components/TipsCatalogModal';
 import { FeelGoodBatteryModal } from './components/FeelGoodBatteryModal';
-import { Task, CalendarBlock, DailyTip, WaterState, UserStats } from './types';
+import { EnergyCheckIn } from './components/EnergyCheckIn';
+import { BloomingGarden } from './components/BloomingGarden';
+import { BreathingResetModal } from './components/BreathingResetModal';
+import { CompassReflectionModal } from './components/CompassReflectionModal';
+import { MilestoneBadgesModal } from './components/MilestoneBadgesModal';
+import { Task, CalendarBlock, DailyTip, WaterState, UserStats, EnergyMood, CompassReflection } from './types';
 import { getDailyTipForDate, PRODUCTIVITY_TIPS } from './data/productivityTips';
 import { sound } from './utils/audio';
+import { firePastelConfetti, fireBigCelebration } from './utils/confetti';
 import { 
   Sparkles, 
   Droplets, 
@@ -22,7 +28,10 @@ import {
   Bookmark, 
   Clock, 
   Zap,
-  Timer
+  Timer,
+  Feather,
+  Moon,
+  Trophy
 } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -46,6 +55,11 @@ export const App: React.FC = () => {
       tipsAppliedCount: 1,
       appliedTipsToday: [],
       favoriteTips: ['tip-1', 'tip-9'],
+      currentMood: 'calm',
+      gardenGrowth: 40,
+      unlockedBadges: ['badge-streak-3'],
+      reflections: [],
+      breathingSessionsCount: 0,
     };
   });
 
@@ -189,6 +203,9 @@ export const App: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
   const [statsModalOpen, setStatsModalOpen] = useState(false);
+  const [breathingModalOpen, setBreathingModalOpen] = useState(false);
+  const [reflectionModalOpen, setReflectionModalOpen] = useState(false);
+  const [badgesModalOpen, setBadgesModalOpen] = useState(false);
 
   // Persistence
   useEffect(() => {
@@ -207,6 +224,19 @@ export const App: React.FC = () => {
     localStorage.setItem('aura_blocks', JSON.stringify(blocks));
   }, [blocks]);
 
+  // Badge Unlock helper
+  const unlockBadge = (badgeId: string) => {
+    setStats(prev => {
+      const currentList = prev.unlockedBadges || [];
+      if (currentList.includes(badgeId)) return prev;
+      return {
+        ...prev,
+        unlockedBadges: [...currentList, badgeId],
+        xp: prev.xp + 25,
+      };
+    });
+  };
+
   // XP Reward helper
   const rewardXp = (amount: number) => {
     setStats(prev => {
@@ -218,6 +248,39 @@ export const App: React.FC = () => {
         level: nextLevel,
       };
     });
+  };
+
+  // Energy Mood Selector
+  const handleSelectMood = (mood: EnergyMood) => {
+    setStats(prev => ({
+      ...prev,
+      currentMood: mood,
+    }));
+    rewardXp(10);
+  };
+
+  // 60-Second Box Breathing Completed
+  const handleCompleteBreathing = () => {
+    setStats(prev => ({
+      ...prev,
+      breathingSessionsCount: (prev.breathingSessionsCount || 0) + 1,
+    }));
+    rewardXp(20);
+    unlockBadge('badge-breath-1');
+  };
+
+  // Evening Reflection Saved
+  const handleSaveReflection = (newRef: Omit<CompassReflection, 'createdAt'>) => {
+    const fullRef: CompassReflection = {
+      ...newRef,
+      createdAt: new Date().toISOString(),
+    };
+    setStats(prev => ({
+      ...prev,
+      reflections: [fullRef, ...(prev.reflections || []).filter(r => r.date !== newRef.date)],
+    }));
+    rewardXp(30);
+    unlockBadge('badge-compass-1');
   };
 
   // Handlers for Tip
@@ -360,9 +423,26 @@ export const App: React.FC = () => {
   };
 
   const highlightTask = tasks.find(t => t.category === 'highlight');
+  const highlightDone = tasks.some(t => t.category === 'highlight' && t.completed);
   const completedCount = tasks.filter(t => t.completed).length;
   const pendingCount = tasks.filter(t => !t.completed).length;
   const waterPct = Math.min(100, Math.round((water.currentMl / water.targetMl) * 100));
+
+  // Dynamic Garden Growth calculation
+  const waterFactor = Math.min(25, (water.currentMl / water.targetMl) * 25);
+  const breathingFactor = (stats.breathingSessionsCount || 0) > 0 ? 15 : 0;
+  const reflectionFactor = (stats.reflections || []).some(r => r.date === todayStr) ? 25 : 0;
+  const taskFactor = Math.min(30, completedCount * 10);
+  const highlightBonus = highlightDone ? 20 : 0;
+  const gardenGrowth = Math.min(100, Math.round(15 + taskFactor + highlightBonus + waterFactor + breathingFactor + reflectionFactor));
+
+  // Check milestone badges
+  useEffect(() => {
+    if (highlightDone) unlockBadge('badge-highlight-1');
+    if (water.currentMl >= water.targetMl) unlockBadge('badge-water-1');
+    if (stats.streak >= 3) unlockBadge('badge-streak-3');
+    if (gardenGrowth >= 100) unlockBadge('badge-bloom-1');
+  }, [highlightDone, water.currentMl, water.targetMl, stats.streak, gardenGrowth]);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-slate-800 flex flex-col font-sans selection:bg-pastel-lilac-200">
@@ -370,6 +450,9 @@ export const App: React.FC = () => {
       <Header
         stats={stats}
         onOpenStatsModal={() => setStatsModalOpen(true)}
+        onOpenBadges={() => setBadgesModalOpen(true)}
+        onOpenBreathing={() => setBreathingModalOpen(true)}
+        onOpenReflection={() => setReflectionModalOpen(true)}
         ambientSound={ambientSound}
         setAmbientSound={setAmbientSound}
         isMuted={isMuted}
@@ -438,6 +521,14 @@ export const App: React.FC = () => {
               </div>
             </div>
 
+            {/* Adaptive Energy Check-In */}
+            <EnergyCheckIn
+              currentMood={stats.currentMood}
+              onSelectMood={handleSelectMood}
+              onOpenBreathing={() => setBreathingModalOpen(true)}
+              onStartTimer={() => setActiveTab('timer')}
+            />
+
             {/* Structured 2-Column Zen Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Left Column: Reminders & Tasks */}
@@ -453,7 +544,7 @@ export const App: React.FC = () => {
                 />
               </div>
 
-              {/* Right Column: Daily Golden Principle & Mini Focus Prompt */}
+              {/* Right Column: Daily Golden Principle, Habit Garden & Mindful Reset */}
               <div className="lg:col-span-5 space-y-6">
                 <DailyTipCard
                   currentTip={currentTip}
@@ -465,26 +556,41 @@ export const App: React.FC = () => {
                   onToggleFavorite={toggleFavoriteTip}
                 />
 
+                {/* The Blooming Garden Component */}
+                <BloomingGarden growth={gardenGrowth} streak={stats.streak} />
+
                 {/* Quick Zen Breath & Focus Card */}
                 <div className="p-5 rounded-3xl bg-gradient-to-br from-pastel-lilac-50/70 to-pastel-cream border border-pastel-lilac-200/60 shadow-soft-sm flex items-center justify-between gap-3">
                   <div className="space-y-1">
                     <span className="text-[10px] font-bold text-pastel-lilac-500 uppercase tracking-widest block">
                       Quick Reset
                     </span>
-                    <h4 className="text-sm font-bold text-slate-800">Ready for a focus burst?</h4>
+                    <h4 className="text-sm font-bold text-slate-800">Need a mental pause?</h4>
                     <p className="text-xs text-slate-500">
-                      Beat starting resistance with a gentle 5m sprint.
+                      Reset with 60s box breathing or a 5m sprint.
                     </p>
                   </div>
-                  <button
-                    onClick={() => {
-                      sound.playPop();
-                      setActiveTab('timer');
-                    }}
-                    className="px-4 py-2 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-soft-sm transition shrink-0 active:scale-95"
-                  >
-                    Start Timer →
-                  </button>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => {
+                        sound.playPop();
+                        setBreathingModalOpen(true);
+                      }}
+                      className="px-3 py-2 rounded-2xl bg-white hover:bg-stone-50 text-slate-700 text-xs font-bold border border-stone-200 shadow-soft-sm transition active:scale-95 flex items-center gap-1"
+                    >
+                      <Feather className="w-3.5 h-3.5 text-pastel-sky-500" />
+                      <span>Breathe</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        sound.playPop();
+                        setActiveTab('timer');
+                      }}
+                      className="px-3.5 py-2 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-soft-sm transition active:scale-95"
+                    >
+                      Sprint →
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -693,6 +799,28 @@ export const App: React.FC = () => {
         isOpen={statsModalOpen}
         onClose={() => setStatsModalOpen(false)}
         stats={stats}
+      />
+
+      {/* 60s Box Breathing Modal */}
+      <BreathingResetModal
+        isOpen={breathingModalOpen}
+        onClose={() => setBreathingModalOpen(false)}
+        onCompleteSession={handleCompleteBreathing}
+      />
+
+      {/* Evening Reflection (3 Compass Questions) Modal */}
+      <CompassReflectionModal
+        isOpen={reflectionModalOpen}
+        onClose={() => setReflectionModalOpen(false)}
+        reflections={stats.reflections || []}
+        onSaveReflection={handleSaveReflection}
+      />
+
+      {/* Milestone Badges Modal */}
+      <MilestoneBadgesModal
+        isOpen={badgesModalOpen}
+        onClose={() => setBadgesModalOpen(false)}
+        unlockedBadgeIds={stats.unlockedBadges || []}
       />
     </div>
   );

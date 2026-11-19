@@ -120,6 +120,36 @@ class SoundManager {
     }
   }
 
+  // Calming Zen Singing Bowl / Inhale bell for Box Breathing
+  public playSingingBowl() {
+    if (this.isMuted) return;
+    try {
+      this.initContext();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      const now = this.ctx.currentTime;
+
+      // Pure 528Hz Love/Transformation frequency
+      osc.frequency.setValueAtTime(528, now);
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.2, now + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 2.6);
+    } catch {
+      // Ignore
+    }
+  }
+
   // Level Up / Big Highlight Complete Fanfare
   public playLevelUp() {
     if (this.isMuted) return;

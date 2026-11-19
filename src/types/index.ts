@@ -53,6 +53,26 @@ export interface WaterState {
   lastLoggedDate: string; // "YYYY-MM-DD"
 }
 
+export type EnergyMood = 'peak' | 'calm' | 'sluggish' | 'overwhelmed';
+
+export interface CompassReflection {
+  date: string;
+  energized: string;
+  drained: string;
+  experiment: string;
+  createdAt: string;
+}
+
+export interface Badge {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlocked: boolean;
+  unlockedAt?: string;
+  category: 'focus' | 'wellness' | 'mindset' | 'growth';
+}
+
 export interface UserStats {
   xp: number;
   level: number;
@@ -62,4 +82,9 @@ export interface UserStats {
   tipsAppliedCount: number;
   appliedTipsToday: string[];
   favoriteTips: string[];
+  currentMood?: EnergyMood;
+  gardenGrowth: number; // 0 to 100
+  unlockedBadges: string[];
+  reflections: CompassReflection[];
+  breathingSessionsCount: number;
 }
